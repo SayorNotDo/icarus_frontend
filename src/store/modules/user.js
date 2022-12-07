@@ -1,4 +1,5 @@
 import { login } from "../../api/user";
+import { urlPrefix } from "../../utils/constants";
 
 function saveSessionStorage(response) {
     // login information stored in cookie
@@ -14,19 +15,22 @@ export function userLogin(userInfo) {
     let loginUrl = "/login";
     switch (userInfo.authenticate) {
         case "LOCAL":
-            loginUrl = "/api/v1/user/login";
+            loginUrl = urlPrefix + "/user/login";
             break;
         case "LDAP":
-            loginUrl = "/app/v1/user/ldap/login";
+            loginUrl = urlPrefix + "/user/ldap/login";
             break;
         default:
-            loginUrl = "/api/v1/user/login";
+            loginUrl = urlPrefix + "/user/login";
     }
     return new Promise((resolve, reject) => {
         login(loginUrl, userInfo)
             .then(response => {
-                saveSessionStorage(response);
+                // saveSessionStorage(response);
                 resolve(response);
             })
-    })
+            .catch(error => {
+                reject(error);
+            });
+    });
 }

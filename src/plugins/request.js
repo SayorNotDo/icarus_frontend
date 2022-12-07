@@ -1,3 +1,4 @@
+import { message } from 'ant-design-vue';
 import axios from 'axios';
 // import TokenKey from '../utils/constants';
 // import getUrlParams from '../utils';
@@ -23,6 +24,27 @@ const instance = axios.create({
     baseURL,    // url = base url + request url
     withCredentials: true, // true = use with credentials for
     //timeout: 60000 // request timeout, default 1 minutes
+})
+
+instance.interceptors.response.use(response => {
+    return response;
+}, error => {
+    let msg;
+    if (error.response && error.response.headers) {
+        if (error.response.status === 402) {
+            if (error.response.headers['redirect']) {
+                window.open(error.response.headers['redirect']);
+            }
+        }
+        msg = error.response.data.message || error.response.data;
+    } else {
+        console.log('error: ', error)
+        msg = error.message
+    }
+    if (msg && !(msg instanceof Object)) {
+        message.error(msg)
+    }
+    return Promise.reject(error)
 })
 
 // // add token beforeEach request
@@ -64,7 +86,7 @@ const promise = (request, loading = {}) => {
     return new Promise((resolve, reject) => {
         loading.status = true;
         request.then(response => {
-            if (response.data.success) {
+            if (response.status == 200) {
                 resolve(response.data);
             } else {
                 reject(response.data);
