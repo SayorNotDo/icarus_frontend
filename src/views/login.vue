@@ -45,10 +45,12 @@
 </template>
 <script>
 import { reactive, defineComponent, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { message } from 'ant-design-vue';
+// import { useRouter } from 'vue-router';
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
+import { userLogin } from '../store/modules/user'
 
-const router = useRouter();
+// const router = useRouter();
 
 // interface FormState {
 //     username: string;
@@ -69,9 +71,12 @@ export default defineComponent({
         });
         const onFinish = (values) => {
             console.log('Success: ', values);
+            message.loading("Please wait...");
+            userLogin(values)
         };
         const onFinishFailed = (errorInfo) => {
             console.log('Failed: ', errorInfo);
+            message.error(errorInfo)
         };
         const disabled = computed(() => {
             return !(formState.username && formState.password)
