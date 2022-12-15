@@ -4,8 +4,20 @@
             <Sidebar />
             <a-layout>
                 <a-layout-header style="background: #fff; padding: 0">
-                    <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
-                    <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+                    <a-row>
+                        <a-col :span="1">
+                            <menu-unfold-outlined v-if="collapsed" class="trigger"
+                                @click="() => (collapsed = !collapsed)" />
+                            <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
+                        </a-col>
+                        <a-col :span="1" :offset="22">
+                            <a-avatar :size="{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }">
+                                <template #icon>
+                                    <UserOutlined />
+                                </template>
+                            </a-avatar>
+                        </a-col>
+                    </a-row>
                 </a-layout-header>
                 <a-layout-content class="content">
                     <router-view></router-view>
@@ -16,14 +28,16 @@
 </template>
 <script>
 import { defineComponent, ref, provide } from 'vue';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
+import { MenuUnfoldOutlined, MenuFoldOutlined, AntDesignOutlined, UserOutlined } from '@ant-design/icons-vue';
 import Sidebar from '../components/sideBar.vue'
 export default defineComponent({
     components: {
-        MenuUnfoldOutlined,
-        MenuFoldOutlined,
-        Sidebar,
-    },
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
+    AntDesignOutlined,
+    Sidebar,
+    UserOutlined
+},
     setup() {
         const collapsed = ref(false);
         const selectedKeys = ref(['1']);

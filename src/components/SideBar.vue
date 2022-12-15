@@ -36,6 +36,11 @@
                 <AlertOutlined />
                 <span>Alert</span>
             </a-menu-item>
+            <a-menu-item key="8" title="Document">
+                <!-- <router-link to="/framework"></router-link> -->
+                <FileOutlined />
+                <span>Document</span>
+            </a-menu-item>
         </a-menu>
     </a-layout-sider>
 </template>
@@ -44,7 +49,7 @@ import {
     DashOutlined, HomeOutlined, ScheduleOutlined, CodeOutlined,
     BugOutlined, BarChartOutlined, SettingOutlined, UserOutlined,
     MenuUnfoldOutlined, MenuFoldOutlined, AlertOutlined, CiCircleOutlined,
-    ClusterOutlined
+    ClusterOutlined, FileOutlined
 } from '@ant-design/icons-vue';
 import { defineComponent, inject } from 'vue';
 
@@ -63,6 +68,7 @@ export default defineComponent({
         AlertOutlined,
         CiCircleOutlined,
         ClusterOutlined,
+        FileOutlined
     },
     setup() {
         const collapsed = inject("collapsed");
