@@ -1,2 +1,2 @@
 export const TokenKey = "Admin-Token"
-export const urlPrefix = "/api/v1"
+export const urlPrefix = "v1/api"
