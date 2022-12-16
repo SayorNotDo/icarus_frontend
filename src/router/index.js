@@ -15,6 +15,59 @@ const routes = [
         },
         component: () => import("../views/dashboard.vue"),
       },
+      {
+        path: "/schedule",
+        name: "Schedule",
+        meta: {
+          title: "Schedule",
+        },
+        component: () => import("../views/schedule.vue"),
+      },
+      {
+        path: "/execute",
+        name: "Execute",
+        meta: {
+          title: "Execute",
+        },
+        component: () => import("../views/execute.vue"),
+      },
+      {
+        path: "/management",
+        name: "Management",
+        meta: {
+          title: "Management",
+        },
+        component: () => import("../views/management.vue"),
+      },{
+        path: "/analystic",
+        name: "Analystic",
+        meta: {
+          title: "Analystic",
+        },
+        component: () => import("../views/analystic.vue"),
+      },
+      {
+        path: "/ci-cd",
+        name: "CI-CD",
+        meta: {
+          title: "CI-CD",
+        },
+        component: () => import("../views/cicd.vue"),
+      },{
+        path: "/doc",
+        name: "Documentation",
+        meta: {
+          title: "Documentation",
+        },
+        component: () => import("../views/document.vue"),
+      },{
+        path: "/alert",
+        name: "Alert",
+        meta: {
+          title: "Alert",
+        },
+        component: () => import("../views/alert.vue"),
+      }
     ],
   },
   {

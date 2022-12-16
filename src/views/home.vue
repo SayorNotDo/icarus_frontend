@@ -11,11 +11,29 @@
                             <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
                         </a-col>
                         <a-col :span="1" :offset="22">
-                            <a-avatar :size="{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }">
-                                <template #icon>
-                                    <UserOutlined />
+                            <a-dropdown>
+                                <a-avatar :size="{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }">
+                                    <template #icon>
+                                        <UserOutlined />
+                                    </template>
+                                </a-avatar>
+                                <template #overlay>
+                                    <a-menu>
+                                        <a-menu-item key="profile">
+                                            <UserOutlined />
+                                            Profile
+                                        </a-menu-item>
+                                        <a-menu-item key="setting">
+                                            <SettingOutlined />
+                                            Setting
+                                        </a-menu-item>
+                                        <a-menu-item key="logout">
+                                            <LogoutOutlined />
+                                            Logout
+                                        </a-menu-item>
+                                    </a-menu>
                                 </template>
-                            </a-avatar>
+                            </a-dropdown>
                         </a-col>
                     </a-row>
                 </a-layout-header>
@@ -28,16 +46,21 @@
 </template>
 <script>
 import { defineComponent, ref, provide } from 'vue';
-import { MenuUnfoldOutlined, MenuFoldOutlined, AntDesignOutlined, UserOutlined } from '@ant-design/icons-vue';
+import {
+    MenuUnfoldOutlined, MenuFoldOutlined, AntDesignOutlined, UserOutlined,
+    SettingOutlined, LogoutOutlined
+} from '@ant-design/icons-vue';
 import Sidebar from '../components/sideBar.vue'
 export default defineComponent({
     components: {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    AntDesignOutlined,
-    Sidebar,
-    UserOutlined
-},
+        MenuUnfoldOutlined,
+        MenuFoldOutlined,
+        AntDesignOutlined,
+        Sidebar,
+        UserOutlined,
+        SettingOutlined,
+        LogoutOutlined,
+    },
     setup() {
         const collapsed = ref(false);
         const selectedKeys = ref(['1']);
@@ -92,5 +115,10 @@ header {
 
 .trigger:hover {
     color: #1890ff;
+}
+
+:deep(.ant-dropdown-button) {
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
 </style>

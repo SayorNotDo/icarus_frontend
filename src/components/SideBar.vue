@@ -3,17 +3,17 @@
         <div class="logo" />
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
             <a-menu-item key="1" title="Dashboard">
-                <!-- <router-link to="/dashboard"></router-link> -->
+                <router-link to="/dashboard"></router-link>
                 <home-outlined />
                 <span>Dashboard</span>
             </a-menu-item>
             <a-menu-item key="2" title="Schedule">
-                <!-- <router-link to="/schedule"></router-link> -->
+                <router-link to="/schedule"></router-link>
                 <schedule-outlined />
                 <span>Schedule</span>
             </a-menu-item>
             <a-menu-item key="3" title="Execute">
-                <!-- <router-link to="/execute"></router-link> -->
+                <router-link to="/execute"></router-link>
                 <code-outlined />
                 <span>Execute</span>
             </a-menu-item>
@@ -22,22 +22,22 @@
                 <span>Management</span>
             </a-menu-item>
             <a-menu-item key="5" title="CI/CD">
-                <!-- <router-link to="/debug"></router-link> -->
+                <router-link to="/ci-cd"></router-link>
                 <CiCircleOutlined />
                 <span>CI/CD</span>
             </a-menu-item>
             <a-menu-item key="6" title="Analystic">
-                <!-- <router-link to="/analystic"></router-link> -->
+                <router-link to="/analystic"></router-link>
                 <bar-chart-outlined />
                 <span>Analystic</span>
             </a-menu-item>
             <a-menu-item key="7" title="Alert">
-                <!-- <router-link to="/framework"></router-link> -->
+                <router-link to="/alert"></router-link>
                 <AlertOutlined />
                 <span>Alert</span>
             </a-menu-item>
             <a-menu-item key="8" title="Document">
-                <!-- <router-link to="/framework"></router-link> -->
+                <router-link to="/doc"></router-link>
                 <FileOutlined />
                 <span>Document</span>
             </a-menu-item>
